@@ -6,7 +6,7 @@ const Links = () => {
     return (
         <LinksContainer>
             {columns.map(column =>
-                <LinksCard column={column} />)}
+                <LinksCard key={column.id} column={column} />)}
         </LinksContainer>
     )
 }

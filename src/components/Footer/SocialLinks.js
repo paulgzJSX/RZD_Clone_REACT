@@ -6,7 +6,7 @@ const SocialLinks = () => {
         <SocialLinksContainer>
             <ul>
                 {socialLinks.map(socialLink =>
-                    <li><a href={socialLink.link}>{socialLink.icon}</a></li>)}
+                    <li key={socialLink.id}><a href={socialLink.link}>{socialLink.icon}</a></li>)}
             </ul>
         </SocialLinksContainer>
     )

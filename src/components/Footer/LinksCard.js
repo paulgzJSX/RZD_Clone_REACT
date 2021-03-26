@@ -6,7 +6,7 @@ const LinksCard = ({ column }) => {
             <p>{column.title}</p>
             <LinksList>
                 {column.links.map(link =>
-                    <li><a href={link.url}>{link.text}</a></li>)}
+                    <li key={link.id}><a href={link.url}>{link.text}</a></li>)}
             </LinksList>
             {column.additional && column.additional}
         </Column>
