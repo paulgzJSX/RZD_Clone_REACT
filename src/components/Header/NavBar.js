@@ -6,7 +6,7 @@ const NavBar = () => {
         <nav>
             <ul>
                 {navBarLinks.map(item =>
-                    <NavLink><a href="#">{item.title}</a></NavLink>)}
+                    <NavLink key={item.id}><a href="#">{item.title}</a></NavLink>)}
             </ul>
         </nav>
     )

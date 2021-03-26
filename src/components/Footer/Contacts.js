@@ -5,7 +5,7 @@ const Contacts = () => {
     return (
         <ContactsContainer>
             {contacts.map(contact =>
-                <div>
+                <div key={contact.id}>
                     <h3>{contact.number}</h3>
                     <p>{contact.description}</p>
                 </div>)}

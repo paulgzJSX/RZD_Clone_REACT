@@ -1,10 +1,12 @@
-import { IoIosArrowDown } from 'react-icons/io'
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import styled from 'styled-components'
 
-const SelectionIcon = () => {
+const SelectionIcon = ({ handleClick, selectedItem, itemId, displayDropdown }) => {
     return (
-        <Circle>
-            <ArrowDownIcon />
+        <Circle onClick={handleClick}>
+            {selectedItem === itemId && displayDropdown
+                ? <ArrowUpIcon />
+                : <ArrowDownIcon />}
         </Circle>
     )
 }
@@ -22,6 +24,13 @@ const Circle = styled.div`
 `
 
 const ArrowDownIcon = styled(IoIosArrowDown)`
+    font-size: .7rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+`
+
+const ArrowUpIcon = styled(IoIosArrowUp)`
     font-size: .7rem;
     font-weight: bold;
     color: #fff;

@@ -1,7 +1,7 @@
 export const navBarLinks = [
-    { title: 'Пассажирам', link: '' },
-    { title: 'Грузовые перевозки', link: '' },
-    { title: 'Компания', link: '' },
-    { title: 'Работа в РЖД', link: '' },
-    { title: 'Контакты', link: '' }
+    { id: 1, title: 'Пассажирам', link: '' },
+    { id: 2, title: 'Грузовые перевозки', link: '' },
+    { id: 3, title: 'Компания', link: '' },
+    { id: 4, title: 'Работа в РЖД', link: '' },
+    { id: 5, title: 'Контакты', link: '' }
 ]
