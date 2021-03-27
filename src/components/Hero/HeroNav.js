@@ -1,25 +1,16 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { navMenuLinks } from '../../data/navMenuLinks'
 import styled from 'styled-components'
 import SelectionIcon from '../Icons/SelectionIcon'
 import Dropdown from './Dropdown'
+import { useClickOutside } from '../../hooks/useClickOutside'
 
 const HeroNav = () => {
     const [displayDropdown, setDisplayDropdown] = useState(false)
     const [selectedItem, setSelectedItem] = useState(null)
     const itemRef = useRef(null)
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => document.removeEventListener('mousedown', handleClickOutside)
-    }, [])
-
-    const handleClickOutside = e => {
-        if (itemRef.current && !itemRef.current.contains(e.target)) {
-            setDisplayDropdown(false)
-            setSelectedItem(null)
-        }
-    }
+    useClickOutside(itemRef, setDisplayDropdown, setSelectedItem)
 
     const handleClick = id => {
         setDisplayDropdown(!displayDropdown)
@@ -33,6 +24,7 @@ const HeroNav = () => {
                     <a href="#">{item.title}</a>
                     {item.hasDropdown &&
                         <SelectionIcon
+                            color='#fff'
                             handleClick={() => handleClick(item.id)}
                             selectedItem={selectedItem}
                             itemId={item.id}

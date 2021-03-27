@@ -1,5 +1,7 @@
 import React from 'react'
+import { Circle, ArrowDownIcon } from '../Icons/SelectionIcon'
 import styled from 'styled-components'
+import SelectionIcon from '../Icons/SelectionIcon'
 
 const Dropdown = React.forwardRef(({ dropdownItems, isLastDropdown }, ref) => {
     return (
@@ -9,6 +11,7 @@ const Dropdown = React.forwardRef(({ dropdownItems, isLastDropdown }, ref) => {
                     <li key={dropdownItem?.id}>
                         <MenuRow>
                             <p>{dropdownItem?.title}</p>
+                            {dropdownItem.hasDropdown && <SelectionIcon color='#000' size='big' font='big' />}   
                         </MenuRow>
                     </li>)}
             </ul>
@@ -43,6 +46,14 @@ const DropdownMenu = styled.div`
             &:hover {
                 background-color: #E9EAED;
                 color: #E21A1A;
+
+                ${Circle} {
+                    border: 1px solid #d89999;
+                }
+
+                ${ArrowDownIcon} {
+                    color: #E21A1A !important;
+                }
             }
         }
     }
@@ -53,12 +64,13 @@ const MenuRow = styled.div`
     min-height: 4.5rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0 5rem 0 1.5rem;
+    justify-content: space-between;
+    padding: 0 1.5rem 0 1.5rem;
     border-bottom: 1px solid #E9EAED;
 
     p {
         text-transform: uppercase;
         font-family: 'Russian Rail G Pro', sans-serif;
+        max-width: 25rem;
     }
 `
