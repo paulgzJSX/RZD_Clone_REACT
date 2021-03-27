@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 const SelectionIcon = ({ handleClick, selectedItem, itemId, displayDropdown, color, size, font }) => {
     return (
-        <Circle onClick={handleClick} size={size} >
+        <Circle onClick={handleClick} size={size}>
             {selectedItem === itemId && displayDropdown
-                ? <ArrowUpIcon color={color} />
+                ? <ArrowUpIcon color={color} font={font} />
                 : <ArrowDownIcon color={color} font={font} />}
         </Circle>
     )
@@ -31,8 +31,8 @@ export const ArrowDownIcon = styled(IoIosArrowDown)`
     cursor: pointer;
 `
 
-const ArrowUpIcon = styled(IoIosArrowUp)`
-    font-size: .7rem;
+export const ArrowUpIcon = styled(IoIosArrowUp)`
+    font-size: ${props => props.font ? '1rem' : '.7rem'};
     font-weight: bold;
     color: ${props => props.black ? '#000' : '#fff'};
     cursor: pointer;

@@ -18,7 +18,12 @@ export const navMenuLinks = [
             { id: 7, title: 'Изменения в расписании', hasDropdown: false },
             { id: 8, title: 'Базовое расписание', hasDropdown: false },
             { id: 9, title: 'Фактическое движение поездов', hasDropdown: false },
-            { id: 10, title: 'Пригородные поезда', hasDropdown: true },
+            { id: 10, title: 'Пригородные поезда', hasDropdown: true, dropdownItems: [
+                { id: 1, title: 'Пригородные пассажирские компании', hasDropdown: false },
+                { id: 2, title: 'Аэроэкспрессы', hasDropdown: false },
+                { id: 3, title: 'Московские центральное кольцо', hasDropdown: false },
+                { id: 4, title: 'Московские центральные диаметры', hasDropdown: false },
+            ] },
         ] 
      },
     { 
@@ -29,7 +34,13 @@ export const navMenuLinks = [
             { id: 1, title: 'Акции', hasDropdown: false},
             { id: 2, title: 'Невозвратные тарифы', hasDropdown: false},
             { id: 3, title: 'Стоимость сервисных услуг', hasDropdown: false},
-            { id: 4, title: 'Деловые проездные', hasDropdown: true },
+            { id: 4, title: 'Деловые проездные', hasDropdown: true, dropdownItems: [
+                { id: 1, title: 'Сапсан', hasDropdown: false },
+                { id: 2, title: 'Стриж', hasDropdown: false },
+                { id: 3, title: 'Красная стрела', hasDropdown: false },
+                { id: 4, title: 'Ласточка', hasDropdown: false },
+                { id: 5, title: 'Москва - Петрозаводск', hasDropdown: false },
+            ] },
             { id: 5, title: 'Дорожные и электронные карты', hasDropdown: false },
             { id: 6, title: 'Подарочная карта', hasDropdown: false },
             { id: 7, title: 'Скидки в международном сообщении', hasDropdown: false },
@@ -43,7 +54,14 @@ export const navMenuLinks = [
         title: 'Услуги и сервисы', 
         hasDropdown: true,
         dropdownItems: [
-            { id: 1, title: 'Маломобильным пассажирам', hasDropdown: true },
+            { id: 1, title: 'Маломобильным пассажирам', hasDropdown: true, dropdownItems: [
+                { id: 1, title: 'Центр содействия мобильности', hasDropdown: true, dropdownItems: [
+                    { id: 1, title: 'Заявка на регистрацию в центре содействия мобильности', hasDropdown: false },
+                    { id: 2, title: 'Заявка на сопровождение и оказание помощи', hasDropdown: false },
+                    { id: 3, title: 'Заявка на резервирование специализированных мест для инвалидов в поездах дальнего следования', hasDropdown: false },
+                ] },
+                { id: 2, title: 'Карта доступности вокзалов', hasDropdown: false },
+            ] },
             { id: 2, title: 'Питание в поездах', hasDropdown: false },
             { id: 3, title: 'Оформление дополнительных услуг к билетам', hasDropdown: false },
             { id: 4, title: 'Перевозка автомобиля', hasDropdown: false },

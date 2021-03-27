@@ -1,18 +1,57 @@
-import React from 'react'
-import { Circle, ArrowDownIcon } from '../Icons/SelectionIcon'
+import React, { useState } from 'react'
+import MenuRow from './MenuRow'
 import styled from 'styled-components'
-import SelectionIcon from '../Icons/SelectionIcon'
 
 const Dropdown = React.forwardRef(({ dropdownItems, isLastDropdown }, ref) => {
+    const [displayMiddleLevel, setDisplayMiddleLevel] = useState(false)
+    const [selectedMiddleLevel, setSelectedMiddleLevel] = useState(null)
+
+    const [displayLowLevel, setDisplayLowLevel] = useState(false)
+    const [selectedLowLevel, setSelectedLowLevel] = useState(null)
+
+    const displayMiddleLevelMenu = id => {
+        setDisplayMiddleLevel(!displayMiddleLevel)
+        setSelectedMiddleLevel(id)
+    }
+
+    const displayLowLevelMenu = id => {
+        setDisplayLowLevel(!displayLowLevel)
+        setSelectedLowLevel(id)
+    }
+
     return (
         <DropdownMenu ref={ref} isLastDropdown={isLastDropdown}>
             <ul>
                 {dropdownItems?.map(dropdownItem =>
                     <li key={dropdownItem?.id}>
-                        <MenuRow>
-                            <p>{dropdownItem?.title}</p>
-                            {dropdownItem.hasDropdown && <SelectionIcon color='#000' size='big' font='big' />}   
-                        </MenuRow>
+                        <MenuRow
+                            handleClick={() => displayMiddleLevelMenu(dropdownItem.id)}
+                            displayDropdown={displayMiddleLevel}
+                            dropdownItem={dropdownItem}
+                            menuType='upperLevel'
+                        />
+                        {displayMiddleLevel && selectedMiddleLevel === dropdownItem.id &&
+                            <ul>
+                                {dropdownItem.dropdownItems.map(dropdownItem =>
+                                    <li key={dropdownItem.id}>
+                                        <MenuRow
+                                            handleClick={() => displayLowLevelMenu(dropdownItem.id)}
+                                            displayDropdown={displayLowLevel}
+                                            dropdownItem={dropdownItem}
+                                            menuType='middleLevel'
+                                        />
+                                        {displayLowLevel && selectedLowLevel === dropdownItem.id &&
+                                            <ul>
+                                                {dropdownItem.dropdownItems.map(dropdownItem =>
+                                                    <li key={dropdownItem.id}>
+                                                        <MenuRow
+                                                            dropdownItem={dropdownItem}
+                                                            menuType='lowLevel'
+                                                        />
+                                                    </li>)}
+                                            </ul>}
+                                    </li>)}
+                            </ul>}
                     </li>)}
             </ul>
         </DropdownMenu>
@@ -33,6 +72,7 @@ const DropdownMenu = styled.div`
     box-shadow: 0 4px 20px rgb(31 31 36 / 12%);
 
     ul {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -42,35 +82,8 @@ const DropdownMenu = styled.div`
             padding: 0 !important;
             cursor: pointer;
             transition: .2s ease-in-out;
-
-            &:hover {
-                background-color: #E9EAED;
-                color: #E21A1A;
-
-                ${Circle} {
-                    border: 1px solid #d89999;
-                }
-
-                ${ArrowDownIcon} {
-                    color: #E21A1A !important;
-                }
-            }
+            display: flex;
+            flex-direction: column;
         }
-    }
-`
-
-const MenuRow = styled.div`
-    width: 100%;
-    min-height: 4.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem 0 1.5rem;
-    border-bottom: 1px solid #E9EAED;
-
-    p {
-        text-transform: uppercase;
-        font-family: 'Russian Rail G Pro', sans-serif;
-        max-width: 25rem;
     }
 `
